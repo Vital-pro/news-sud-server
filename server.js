@@ -9,6 +9,20 @@ const app = express();
 app.use(cors());
 app.use(express.static('public'));
 
+//***start***CRON***** */
+const interval = 10800000;
+function cron(ms, fn) {
+  async function cb() {
+    clearTimeout(timeout);
+    await fn();
+    setTimeout(cb, ms);
+  }
+  let timeout = setTimeout(cb, ms);
+  // return () => clearTimeout(timeout);
+  return () => { };
+}
+//***finish***CRON****** */
+
 app.get('/entry', (req, res) => {
   // res.sendFile('./public/index.html', { root: __dirname });
   if (req.query.url == process.env.ENTRY_KEY) {
@@ -22,7 +36,7 @@ app.get('/entry', (req, res) => {
 
 app.get('/start', (req, res) => {
   getNews();
-  console.log({ message: 'this console.log' });
+  // cron(interval, () => getNews()); //! раскомментить и запустится crone
   res.redirect('/');
 });
 
@@ -58,7 +72,6 @@ async function getNews() {
     app.locals.news = article_data;
     console.log(app.locals.news);
     return app.locals.news;
-
   } catch (error) {
     console.error(error);
     console.log(error.message);
@@ -66,5 +79,9 @@ async function getNews() {
 }
 
 app.listen(process.env.PORT || 3333, () => {
-  console.log(`Server has started..! on port: http://localhost:${process.env.PORT || 3333}`);
+  console.log(
+    `Server has started..! on port: http://localhost:${
+      process.env.PORT || 3333
+    }`
+  );
 });
