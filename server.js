@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const cheerio = require('cheerio');
 const fs = require('fs');
+const scheduleTask = require('./utils/scheduleTask');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.get('/entry', (req, res) => {
 
 app.get('/start', (req, res) => {
   getNews();
+  scheduleTask(getNews);
   // cron(interval, () => getNews()); //! раскомментить и запустится crone
   res.redirect('/');
 });
@@ -47,6 +49,7 @@ app.get('/news', (req, res) => {
 
 async function getNews() {
   const article_data = [];
+  const date = String(new Date());
 
   try {
     const response = await fetch(process.env.URL_SITE);
@@ -66,14 +69,17 @@ async function getNews() {
         imageUrl: imageUrl || imageUrlBig,
         link,
       });
-      app.locals.news = article_data;
-      return app.locals.news;
+    });
+
+    fs.appendFile('datelog.txt', `\n${date}`, function (err) {
+      if (err) throw err;
+      console.log('Saved!');
     });
 
     app.locals.news = article_data;
     console.log(app.locals.news);
-    fs.appendFileSync('datelog.txt', `${new Date().toLocaleString()}\n`, 'utf8');
     return app.locals.news;
+
   } catch (error) {
     console.error(error);
     console.log(error.message);
