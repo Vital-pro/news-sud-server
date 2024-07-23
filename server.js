@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const cheerio = require('cheerio');
+const fs = require('fs');
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(express.static('public'));
 
 //***start***CRON***** */
-const interval = 10800000;
+const interval = 10000;
 function cron(ms, fn) {
   async function cb() {
     clearTimeout(timeout);
@@ -71,6 +72,7 @@ async function getNews() {
 
     app.locals.news = article_data;
     console.log(app.locals.news);
+    fs.appendFileSync('datelog.txt', `${new Date().toLocaleString()}\n`, 'utf8');
     return app.locals.news;
   } catch (error) {
     console.error(error);
