@@ -16,11 +16,28 @@
       background-color: #eac14440;
       font-size: 1rem;
     }
+    button {
+      margin: 20px;
+    }
+    .news {
+      padding: 20px;
+      background-color: #eac144;
+    }
+
+    .start {
+      background-color: red;
+      color: aliceblue;
+      padding: 10px;
+    }
   </style>
   <h1>Start News</h1>
-  <form action="/start" method="get">
+  <form action="/refresh/news" method="get">
     <!-- <input type="text" name="url"> -->
-    <button type="submit">Start News</button>
+    <button class="news" type="submit">Refresh News</button>
+  </form>
+  <form action="/refresh/start" method="get">
+    <!-- <input type="text" name="url"> -->
+    <button class="start" type="submit">Schedule Start</button>
   </form>
 </body>
 </html>

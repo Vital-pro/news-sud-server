@@ -36,8 +36,15 @@ app.get('/entry', (req, res) => {
   }
 });
 
-app.get('/start', (req, res) => {
-  getNews();
+app.get('/refresh/news', async(req, res) => {
+  await getNews();
+  // scheduleTask(getNews);
+  // cron(interval, () => getNews()); //! раскомментить и запустится crone
+  res.redirect('/');
+});
+
+app.get('/refresh/start', async (req, res) => {
+  await getNews();
   scheduleTask(getNews);
   // cron(interval, () => getNews()); //! раскомментить и запустится crone
   res.redirect('/');

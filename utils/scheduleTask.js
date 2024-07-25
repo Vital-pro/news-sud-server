@@ -23,8 +23,9 @@ function scheduleTask(task) {
   cron.schedule(`31 43 10 * * 4`, task);
   cron.schedule(`44 13 12 * * 4`, task);
   cron.schedule(`37 48 13 * * 4`, task);
-  cron.schedule(`11 48 13 * * 4`, task);
+  cron.schedule(`11 29 14 * * 4`, task);
   cron.schedule(`7 15 * * 4`, task);
+  cron.schedule(`13 16 * * 4`, task);
 }
 
 module.exports = scheduleTask
