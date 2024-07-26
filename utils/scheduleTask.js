@@ -8,26 +8,26 @@ function scheduleTask(task) {
   const nowSecond = now.getSeconds();
 
   // Monday
-  cron.schedule('19 38 8 * * 1', getData);
-  cron.schedule('43 12 9 * * 1', getData);
-  cron.schedule('3,42 10 * * 1', getData);
-  cron.schedule('13,51 11 * * 1', getData);
-  cron.schedule('16,58 12 * * 1', getData);
-  cron.schedule('37 41 13 * * 1', getData);
-  cron.schedule('22 40 14 * * 1', getData);
-  cron.schedule('12 22 15 * * 1', getData);
-  cron.schedule('4 39 16 * * 1', getData);
+  cron.schedule('19 38 8 * * 1', task);
+  cron.schedule('43 12 9 * * 1', task);
+  cron.schedule('3,42 10 * * 1', task);
+  cron.schedule('13,51 11 * * 1', task);
+  cron.schedule('16,58 12 * * 1', task);
+  cron.schedule('37 41 13 * * 1', task);
+  cron.schedule('22 40 14 * * 1', task);
+  cron.schedule('12 22 15 * * 1', task);
+  cron.schedule('4 39 16 * * 1', task);
 
   // Tuesday
-  cron.schedule('11 42 8 * * 2', getData);
-  cron.schedule('17 28 9 * * 2', getData);
-  cron.schedule('11,54 10 * * 2', getData);
-  cron.schedule('22,50  11 * * 2', getData);
-  cron.schedule('16,57 12 * * 2', getData);
-  cron.schedule('10 35 13 * * 2', getData);
-  cron.schedule('40 28 14 * * 2', getData);
-  cron.schedule('42 11 15 * * 2', getData);
-  cron.schedule('21 9 16 * * 2', getData);
+  cron.schedule('11 42 8 * * 2', task);
+  cron.schedule('17 28 9 * * 2', task);
+  cron.schedule('11,54 10 * * 2', task);
+  cron.schedule('22,50  11 * * 2', task);
+  cron.schedule('16,57 12 * * 2', task);
+  cron.schedule('10 35 13 * * 2', task);
+  cron.schedule('40 28 14 * * 2', task);
+  cron.schedule('42 11 15 * * 2', task);
+  cron.schedule('21 9 16 * * 2', task);
 
   // Wednesday
   cron.schedule(`10 51 8 * * 3`, task);

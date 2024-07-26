@@ -36,7 +36,7 @@ app.get('/entry', (req, res) => {
   }
 });
 
-app.get('/refresh/news', async(req, res) => {
+app.get('/refresh/news', async (req, res) => {
   await getNews();
   // scheduleTask(getNews);
   // cron(interval, () => getNews()); //! раскомментить и запустится crone
