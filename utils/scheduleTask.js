@@ -36,7 +36,7 @@ function scheduleTask(task) {
   cron.schedule(`33 13 11 * * 3`, task);
   cron.schedule(`13 54 11 * * 3`, task);
   cron.schedule(`30 33 12 * * 3`, task);
-  cron.schedule(`22 27 13 * * 3`, task);
+  cron.schedule(`22 11 13 * * 3`, task);
   cron.schedule(`10 19 14 * * 3`, task);
   cron.schedule(`27 26 15 * * 3`, task);
   cron.schedule(`45 39 16 * * 3`, task);
@@ -61,7 +61,7 @@ function scheduleTask(task) {
 
   // Saturday
   cron.schedule(`50 17 9 * * 6`, task);
-  cron.schedule(`10 41 10 * * 6`, task);
+  cron.schedule(`10 12 10 * * 6`, task);
   cron.schedule(`52 13 12 * * 6`, task);
   cron.schedule(`10 28 13 * * 6`, task);
   cron.schedule(`47 44 15 * * 6`, task);

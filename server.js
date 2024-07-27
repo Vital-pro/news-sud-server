@@ -63,7 +63,8 @@ async function getNews() {
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    const articles_all = $('section > .grid > .grid-item');
+    // const articles_all = $('section > .grid > .grid-item');
+    const articles_all = $('.info-block-big, .info-block-horizontale');
 
     articles_all.each(function () {
       let title = $(this).find('.content > a > span').text();
